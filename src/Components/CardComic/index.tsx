@@ -8,12 +8,12 @@ type Props={
     comic:ComicType
 }
 export const CardComic=({comic}:Props)=>{
-    return <Container>
-        <Container h="130px">
-            <Image src={comic.thumbnail} h='100%' w="1005" />
+    return <Container  bg="#eee"   w='350px' m="50px ">
+        <Container bg="#000" h="250px" p="12px" overflow="hidden" w="100%" d="flex" flexJustify="center">
+            <Image src={comic.thumbnail} h='200px' />
         </Container>
-       <Container>
-          <Title>{comic.title}</Title>
+       <Container m="30px 0">
+          <Title fontSize="1.456em">{comic.title}</Title>
           <Text>{comic.pageCount}</Text>
           <Text>{comic.description}</Text>
           <Text>{comic.prices[0]}</Text>

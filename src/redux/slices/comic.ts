@@ -1,11 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ComicType } from "../../types/comicType";
+import comic  from '/comic.jpg'
 
-
-const initialState:ComicType[]=[]
+const initialState:ComicType[]=[{
+        id: 1,
+        title: 'spider-man',
+        issueNumber:34,
+        description: '',
+        format: 'PDF',
+        pageCount: 34,
+        prices: [],
+        thumbnail: comic,
+        series: ''
+}]
 
 const comicSlice=createSlice({
-    name:'comic',
+    name:'comics',
     initialState:initialState,
     reducers:{
         addComic:(state)=>{

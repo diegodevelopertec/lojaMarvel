@@ -6,8 +6,10 @@ import comicReducer from './slices/comic'
 const store=configureStore({
     reducer:{
         menu:menuReducer,
-        comic:comicReducer
+        comics:comicReducer
     }
 })
 
 export default store
+
+export type RootState=ReturnType<typeof store.getState>

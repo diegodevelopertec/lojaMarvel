@@ -6,30 +6,57 @@ import Logo from '/logo.png'
 import { Buttom } from "../structure/Button"
 import { useState } from "react"
 import { useLocation } from "react-router-dom"
-import AbrirMenu from './menumobile.png'
-import FecharMenu from './fechar.png'
-
+import AbrirMenu from '/menumobile.png'
+import FecharMenu from '/fechar.png'
+import { useAppSelector } from "../../hooks/useAppSelector"
+import { useDispatch } from "react-redux"
+import {toggleMenu} from './../../redux/slices/menuMobile'
 
 export const HeaderApp=()=>{
-    const [startMobile,setStartMobile]=useState()
-  
+    const {menu}=useAppSelector(state=>state)
+    const dispacth=useDispatch()
 
-    return <Header bg="#2b2929" p="20px 0" d="flex" flexJustify="space-between" >
+
+    return <Header bg="#2b2929" p="20px 12px" d="flex"  flexJustify="space-between" >
         <Container>
             <Image src={Logo} h="50px" w="140px" />
         </Container>
-        <Container d="none" mqD={startMobile ? 'flex' : 'none'}>
-            <Buttom w="50px" h="50px">abrir</Buttom>
+        <Container d="none" mqD={!menu ? 'flex' : 'hidden'}>
+            <Buttom w="50px" h="50px" d="flex" flexJustify="center" flexAlign="center" onClick={()=>dispacth(toggleMenu())}>
+                <Image src={AbrirMenu}  />
+            </Buttom>
         </Container>
-        <Container d="flex" flexJustify="center" fontSize="1.1645em"  color="#eee" flexAlign="center" m="0 20px">
-            <Container d="none" mqD={startMobile ? 'flex' : 'none'} >
-                <Buttom w="50px" h="50px">abrir</Buttom>
-            </Container>
-            <Container h="100%" d="flex" flexJustify="center" flexAlign="center" >
-                <Connection cursor="pointer" color="#eee" textDecoration="none"  href={'/'} m="0 12px"  p="10px" colorHover="#2b2929"  bgHover="#d1271b" >Inicio</Connection>
-                <Connection   cursor="pointer" color="#eee"  textDecoration="none" href={'/comics'}  m="0 12px"  p="10px"  colorHover="#2b2929"  bgHover="#d1271b" >Revistas</Connection>
-                <Connection  cursor="pointer" color="#eee" textDecoration="none" href={'/comics/favorites'}  m="0 12px"  p="10px"  colorHover="#2b2929"  bgHover="#d1271b">Favoritos</Connection>
-            </Container>
+
+        <Container d="flex" flexJustify="center" h="100%" flexAlign="center"  
+            mqPosition="fixed"
+            mqTop="0"
+            mqRight="0"
+            mqBottom="0"
+            mqDirection="column"
+            mqDJustify='start'
+            bg="#2b2929" 
+            mqw={menu ? '65vw' : '0'}
+            trs="all ease .2s"
+            mqD={menu ? 'flex' : 'hidden'}
+        
+        >
+                <Container d="none" mqw='100%'  mqD='flex' mqDJustify="end">
+                    <Buttom w="50px" bg='transparent' mqm="30px" bd="none" h="50px" d="flex" flexJustify="center" flexAlign="center" >
+                        <Image src={FecharMenu} onClick={()=>dispacth(toggleMenu())} />
+                    </Buttom>
+                </Container>
+
+            
+              <Container d="flex" flex="1" mqDJustify="center" mqDirection="column" flexAlign="center" flexJustify="center" m="0 45px" mqm="0"  >
+                <Connection bdRadius="35px 14px" cursor="pointer" color="#eee" textDecoration="none"  href={'/'} m="0 12px"  p="13px" colorHover="#2b2929"  bgHover="#d1271b" >Inicio</Connection>
+                <Connection bdRadius="35px 14px"   cursor="pointer" color="#eee"  textDecoration="none" href={'/comics'}  m="0 12px"  p="13px"  colorHover="#2b2929"  bgHover="#d1271b" >Revistas</Connection>
+                <Connection bdRadius="35px 14px"   cursor="pointer" color="#eee" textDecoration="none" href={'/comics/favorites'}  m="0 12px"  p="13px"  colorHover="#2b2929"  bgHover="#d1271b">Favoritos</Connection>
+              </Container>
+
         </Container>
+
+
+
+        
     </Header>
 }
