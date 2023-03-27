@@ -1,12 +1,15 @@
 import React from "react";
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, createReducer } from "@reduxjs/toolkit";
 import menuReducer from "./slices/menuMobile";
 import comicReducer from './slices/comic'
+import cartReducer from './slices/cart'
+
 
 const store=configureStore({
     reducer:{
         menu:menuReducer,
-        comics:comicReducer
+        comics:comicReducer,
+        cart:cartReducer
     }
 })
 

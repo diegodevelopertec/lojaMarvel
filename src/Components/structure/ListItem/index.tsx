@@ -1,31 +1,13 @@
 import {Box} from './style'
 import { PropsComponents } from '../../../types/PropsComponents'
 import { ReactNode } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { toggleMenu } from '../../../redux/slices/menuMobile'
 
 
-export const Connection=({...propsElement}:PropsComponents,)=>{
-  const navigate=useNavigate()
-  const dispatch=useDispatch()
-
-  const clickEvent=(e:any)=>{
-    e.preventDefault()
-    navigate(`${propsElement.href}`)
-    dispatch(toggleMenu())
-    
-  }
-
-
-
-
-
-
+export const ListItem=({...propsElement}:PropsComponents)=>{
     return <Box
-    
-    onClick={clickEvent}
-    href={propsElement.href}
+  
+   mqGColumns={propsElement.mqGColums}
+    mqGRows={propsElement.mqGRows}
     bgHover={propsElement.bgHover}
     bdHover={propsElement.bdHover}
     colorHover={propsElement.colorHover}
@@ -38,7 +20,8 @@ export const Connection=({...propsElement}:PropsComponents,)=>{
     flexJustify={propsElement.flexJustify}
     flexAlign={propsElement.flexAlign}
     flexDirection={propsElement.flexDirection}
-    cursor={propsElement.cursor}
+    flex={propsElement.flex}
+    mqBg={propsElement.mqBg}
     h={propsElement.h}
     m={propsElement.m}
     mt={propsElement.mt}
@@ -53,7 +36,7 @@ export const Connection=({...propsElement}:PropsComponents,)=>{
     bg={propsElement.bg}
     bgImage={propsElement.bgImage}
     bgSize={propsElement.bgSize}
-    opacity={propsElement.bgSize}
+    opacity={propsElement.opacity}
     
     color={propsElement.color}
     textAlign={propsElement.textAlign}
@@ -61,7 +44,7 @@ export const Connection=({...propsElement}:PropsComponents,)=>{
     overflow={propsElement.overflow}
     fontWeight={propsElement.fontWeight}
     fontSize={propsElement.fontSize}
-    textDecorationHover={propsElement.textDecorationHover}
+    cursor={propsElement.cursor}
     bd={propsElement.bd}
     bdTopLeft={propsElement.bdTopLeft}
     bdTopRight={propsElement.bdRadiusTopRight}
@@ -78,6 +61,7 @@ export const Connection=({...propsElement}:PropsComponents,)=>{
     psLeft={propsElement.psLeft}
     psRight={propsElement.psRight}
     psBottom={propsElement.psBottom}
+    onClick={propsElement.onClick}
     onFocus={propsElement.focus}
     mqD={propsElement.mqD}
     mqW={propsElement.mqw}
@@ -87,13 +71,25 @@ export const Connection=({...propsElement}:PropsComponents,)=>{
     mqDAlign={propsElement.mqDAlign}
     mqDJustify={propsElement.mqDJustify}
     mqDirection={propsElement.mqDirection}
-    textDecoration={propsElement.textDecoration}
+    mqPosition={propsElement.mqPosition}
+    mqTop={propsElement.mqTop}
+    mqBottom={propsElement.mqBottom}
+    mqLeft={propsElement.mqLeft}
+    mqRight={propsElement.mqRight}
+    mqw900={propsElement.mqw900}
+    mqw600={propsElement.mqw600}
     mqMnh={propsElement.mqmnh}
     mqMnw={propsElement.mqmnw}
     minH={propsElement.mnh}
     minW={propsElement.mnw}
     maxH={propsElement.mxh}
     maxW={propsElement.mxw}
+    gridRows={propsElement.gridRows}
+    gridColumns={propsElement.gridColumns}
+    gridAreas={propsElement.gridAreas}
+    gridGap={propsElement.gridGap}
+    zIndex={propsElement.zindex}
+    bgRGBA={propsElement.bgRGBA}
     >
       {propsElement.children}
 

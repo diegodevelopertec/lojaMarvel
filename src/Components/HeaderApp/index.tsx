@@ -5,7 +5,7 @@ import { Connection } from "../structure/Connection"
 import Logo from '/logo.png'
 import { Buttom } from "../structure/Button"
 import { useState } from "react"
-import { useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import AbrirMenu from '/menumobile.png'
 import FecharMenu from '/fechar.png'
 import { useAppSelector } from "../../hooks/useAppSelector"
@@ -15,7 +15,12 @@ import {toggleMenu} from './../../redux/slices/menuMobile'
 export const HeaderApp=()=>{
     const {menu}=useAppSelector(state=>state)
     const dispacth=useDispatch()
+    const navigate=useNavigate()
 
+    const setNavigate=(href:string)=>{
+        navigate(`${href}`)
+       toggleMenu()
+    }
 
     return <Header bg="#2b2929" p="20px 12px" d="flex"  flexJustify="space-between" >
         <Container>
@@ -48,9 +53,11 @@ export const HeaderApp=()=>{
 
             
               <Container d="flex" flex="1" mqDJustify="center" mqDirection="column" flexAlign="center" flexJustify="center" m="0 45px" mqm="0"  >
-                <Connection bdRadius="35px 14px" cursor="pointer" color="#eee" textDecoration="none"  href={'/'} m="0 12px"  p="13px" colorHover="#2b2929"  bgHover="#d1271b" >Inicio</Connection>
-                <Connection bdRadius="35px 14px"   cursor="pointer" color="#eee"  textDecoration="none" href={'/comics'}  m="0 12px"  p="13px"  colorHover="#2b2929"  bgHover="#d1271b" >Revistas</Connection>
-                <Connection bdRadius="35px 14px"   cursor="pointer" color="#eee" textDecoration="none" href={'/comics/favorites'}  m="0 12px"  p="13px"  colorHover="#2b2929"  bgHover="#d1271b">Favoritos</Connection>
+                <Connection bdRadius="35px 14px" colorHover='#aaa' cursor="pointer" color="#eee" textDecoration="none" href={'/'} m="0 12px"  p="13px"   bgHover="#d1271b" >Inicio</Connection>
+                <Connection bdRadius="35px 14px"  colorHover='#aaa'  cursor="pointer" color="#eee"  textDecoration="none" href={'/comics'}  m="0 12px"  p="13px"    bgHover="#d1271b" >Revistas</Connection>
+                <Connection bdRadius="35px 14px"   colorHover='#aaa' cursor="pointer" color="#eee" textDecoration="none"  href={'/comics/favorites'}  m="0 12px"  p="13px"   bgHover="#d1271b">Favoritos</Connection>
+                <Connection bdRadius="35px 14px"   colorHover='#aaa' cursor="pointer" color="#eee" textDecoration="none"  href={'/comics/cart'}  m="0 12px"  p="13px"   bgHover="#d1271b">Carrinho</Connection>
+              
               </Container>
 
         </Container>
